@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://darob52cj6ab0"]
+
+[ext_resource type="PackedScene" uid="uid://dbv6ipmtj3t4f" path="res://scenes/level_scenes/level_test.tscn" id="1_44a3y"]
+
+[node name="Core" type="Node2D"]
+
+[node name="CoreControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MVCont" type="SubViewportContainer" parent="CoreControl"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+stretch = true
+
+[node name="MV" type="SubViewport" parent="CoreControl/MVCont"]
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="CurrentLevel" parent="CoreControl/MVCont/MV" instance=ExtResource("1_44a3y")]
+
+[editable path="CoreControl/MVCont/MV/CurrentLevel"]

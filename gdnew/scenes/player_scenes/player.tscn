@@ -1,0 +1,178 @@
+[gd_scene load_steps=4 format=3 uid="uid://cju2iarg0tjr"]
+
+[ext_resource type="Script" path="res://scripts/player_scripts/player.gd" id="1_5g41u"]
+[ext_resource type="Texture2D" uid="uid://cto1g7cjh0l2i" path="res://_/icon.svg" id="2_qhk41"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gjy4v"]
+radius = 64.0
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(0, -64)
+floor_constant_speed = true
+floor_snap_length = 11.0
+script = ExtResource("1_5g41u")
+
+[node name="CoyoteTimer" type="Timer" parent="."]
+wait_time = 0.15
+one_shot = true
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_qhk41")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_gjy4v")
+debug_color = Color(0, 0.6, 0.701961, 0.141176)
+metadata/_edit_lock_ = true
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2(0, -64)
+position_smoothing_speed = 30.0
+
+[node name="DebugMod" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -960.0
+offset_top = -544.0
+offset_right = 960.0
+offset_bottom = 536.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_group_ = true
+
+[node name="Monitors" type="Control" parent="DebugMod"]
+anchors_preset = 0
+offset_left = 16.0
+offset_top = 12.0
+offset_right = 666.0
+offset_bottom = 712.0
+
+[node name="Monitors" type="VBoxContainer" parent="DebugMod/Monitors"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FPS" type="ColorRect" parent="DebugMod/Monitors/Monitors"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+color = Color(0.0823529, 0.121569, 0.137255, 0.462745)
+
+[node name="Label" type="Label" parent="DebugMod/Monitors/Monitors/FPS"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+offset_left = 11.0
+offset_right = 661.0
+offset_bottom = 35.0
+text = "FPS: "
+vertical_alignment = 1
+
+[node name="MemoryUsage" type="ColorRect" parent="DebugMod/Monitors/Monitors"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+color = Color(0.0823529, 0.121569, 0.137255, 0.462745)
+
+[node name="Label" type="Label" parent="DebugMod/Monitors/Monitors/MemoryUsage"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+offset_left = 11.0
+offset_right = 661.0
+offset_bottom = 35.0
+text = "MEM: 
+"
+vertical_alignment = 1
+
+[node name="MemoryUsageMax" type="ColorRect" parent="DebugMod/Monitors/Monitors"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+color = Color(0.0823529, 0.121569, 0.137255, 0.462745)
+
+[node name="Label" type="Label" parent="DebugMod/Monitors/Monitors/MemoryUsageMax"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+offset_left = 11.0
+offset_right = 661.0
+offset_bottom = 35.0
+text = "MEM_MAX: 
+"
+vertical_alignment = 1
+
+[node name="Velocity" type="ColorRect" parent="DebugMod/Monitors/Monitors"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+color = Color(0.0823529, 0.121569, 0.137255, 0.462745)
+
+[node name="Label" type="Label" parent="DebugMod/Monitors/Monitors/Velocity"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+offset_left = 11.0
+offset_right = 661.0
+offset_bottom = 35.0
+text = "VELOCITY: 
+"
+vertical_alignment = 1
+
+[node name="State" type="ColorRect" parent="DebugMod/Monitors/Monitors"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+color = Color(0.0823529, 0.121569, 0.137255, 0.462745)
+
+[node name="Label" type="Label" parent="DebugMod/Monitors/Monitors/State"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+offset_left = 11.0
+offset_right = 661.0
+offset_bottom = 35.0
+text = "STATE: 
+"
+vertical_alignment = 1
+
+[node name="ShownPanels" type="Control" parent="DebugMod"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -299.0
+offset_top = -540.0
+offset_bottom = -73.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DebugMod/ShownPanels"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+
+[node name="Monitors" type="Button" parent="DebugMod/ShownPanels/VBoxContainer"]
+custom_minimum_size = Vector2(0, 62)
+layout_mode = 2
+text = "Monitors
+"
+
+[node name="CheckButton" type="CheckButton" parent="DebugMod"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -147.0
+offset_top = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(2, 2)
+pivot_offset = Vector2(147, 31)
+text = "hide buttons"
+
+[connection signal="button_down" from="DebugMod/ShownPanels/VBoxContainer/Monitors" to="." method="_on_monitors_button_down"]
+[connection signal="button_down" from="DebugMod/CheckButton" to="." method="_on_check_button_button_down"]
+[connection signal="button_up" from="DebugMod/CheckButton" to="." method="_on_check_button_button_up"]
