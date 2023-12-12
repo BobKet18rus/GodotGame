@@ -11,7 +11,7 @@ position = Vector2(8, 24)
 collision_mask = 18
 slide_on_ceiling = false
 floor_constant_speed = true
-floor_snap_length = 15.0
+floor_snap_length = 11.0
 script = ExtResource("1_5g41u")
 
 [node name="ActualPosition" type="Marker2D" parent="."]
@@ -36,10 +36,6 @@ position_smoothing_speed = 30.0
 wait_time = 0.15
 one_shot = true
 
-[node name="JumpBuffer" type="Timer" parent="."]
-wait_time = 0.4
-one_shot = true
-
 [node name="DebugMod" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
@@ -52,7 +48,6 @@ offset_bottom = 408.0
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_group_ = true
-metadata/_edit_lock_ = true
 
 [node name="Monitors" type="Control" parent="DebugMod"]
 anchors_preset = 0
@@ -66,10 +61,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -328.0
-offset_top = -180.0
-offset_right = -328.0
-offset_bottom = -180.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -133,7 +124,6 @@ text = "VELOCITY:
 vertical_alignment = 1
 
 [node name="State" type="ColorRect" parent="DebugMod/Monitors/Monitors"]
-visible = false
 custom_minimum_size = Vector2(0, 35)
 layout_mode = 2
 color = Color(0.0823529, 0.121569, 0.137255, 0.462745)
@@ -155,9 +145,9 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -376.0
-offset_right = 299.0
-offset_bottom = 91.0
+offset_left = -299.0
+offset_top = -540.0
+offset_bottom = -73.0
 grow_horizontal = 0
 grow_vertical = 0
 
@@ -176,48 +166,6 @@ layout_mode = 2
 text = "Monitors
 "
 
-[node name="History" type="Button" parent="DebugMod/ShownPanels/VBoxContainer"]
-custom_minimum_size = Vector2(0, 62)
-layout_mode = 2
-text = "State History
-"
-
-[node name="StateHistory" type="Control" parent="DebugMod"]
-visible = false
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = 32.0
-offset_top = -176.0
-offset_right = 320.0
-offset_bottom = 424.0
-grow_horizontal = 0
-pivot_offset = Vector2(576, 0)
-metadata/_edit_lock_ = true
-metadata/_edit_group_ = true
-
-[node name="StateHistory" type="PanelContainer" parent="DebugMod/StateHistory"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="StateHistory" type="TextEdit" parent="DebugMod/StateHistory/StateHistory"]
-layout_mode = 2
-scroll_smooth = true
-
-[node name="CleanHistoryButton" type="Button" parent="DebugMod"]
-visible = false
-layout_mode = 2
-offset_left = 1960.0
-offset_top = 432.0
-offset_right = 2232.0
-offset_bottom = 480.0
-text = "CLEAN HISTORY"
-
 [node name="CheckButton" type="CheckButton" parent="DebugMod"]
 layout_mode = 1
 anchors_preset = 3
@@ -225,18 +173,42 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 152.0
-offset_top = 133.0
-offset_right = 299.0
-offset_bottom = 164.0
+offset_left = -147.0
+offset_top = -31.0
 grow_horizontal = 0
 grow_vertical = 0
 scale = Vector2(2, 2)
 pivot_offset = Vector2(147, 31)
 text = "hide buttons"
 
+[node name="StateHistory" type="Control" parent="DebugMod"]
+custom_minimum_size = Vector2(1152, 300)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -832.0
+offset_top = -160.0
+offset_right = 320.0
+offset_bottom = -120.0
+grow_horizontal = 0
+
+[node name="StateHistory" type="PanelContainer" parent="DebugMod/StateHistory"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -576.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+
+[node name="StateHistory" type="TextEdit" parent="DebugMod/StateHistory/StateHistory"]
+self_modulate = Color(1, 0, 1, 0.180392)
+layout_mode = 2
+wrap_mode = 1
+scroll_smooth = true
+
 [connection signal="button_down" from="DebugMod/ShownPanels/VBoxContainer/Monitors" to="." method="_on_monitors_button_down"]
-[connection signal="button_down" from="DebugMod/ShownPanels/VBoxContainer/History" to="." method="_on_history_button_down"]
-[connection signal="button_down" from="DebugMod/CleanHistoryButton" to="." method="_on_clean_history_button_button_down"]
 [connection signal="button_down" from="DebugMod/CheckButton" to="." method="_on_check_button_button_down"]
 [connection signal="button_up" from="DebugMod/CheckButton" to="." method="_on_check_button_button_up"]

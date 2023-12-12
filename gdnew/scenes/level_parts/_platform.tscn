@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://dh850h8gx8oeb"]
+
+[ext_resource type="Script" path="res://scripts/level_parts/_platform_template.gd" id="1_m38vi"]
+[ext_resource type="Script" path="res://addons/rmsmartshape/shapes/shape_open.gd" id="1_mfds4"]
+[ext_resource type="Script" path="res://addons/rmsmartshape/shapes/point_array.gd" id="4_2ehnj"]
+[ext_resource type="Script" path="res://addons/rmsmartshape/materials/shape_material.gd" id="5_24gdr"]
+
+[sub_resource type="Resource" id="Resource_eg5ka"]
+script = ExtResource("4_2ehnj")
+_points = {}
+_point_order = Array[int]([])
+_constraints = {}
+_next_key = 24
+_material_overrides = {}
+
+[sub_resource type="Resource" id="Resource_6kbpj"]
+script = ExtResource("5_24gdr")
+_edge_meta_materials = Array[Resource("res://addons/rmsmartshape/materials/edge_material_metadata.gd")]([])
+fill_textures = Array[Texture2D]([])
+fill_texture_z_index = -10
+fill_texture_show_behind_parent = false
+fill_mesh_offset = 0.0
+render_offset = 0.0
+
+[node name="Platform" type="StaticBody2D"]
+collision_layer = 16
+script = ExtResource("1_m38vi")
+
+[node name="Shape" type="Node2D" parent="."]
+script = ExtResource("1_mfds4")
+_points = SubResource("Resource_eg5ka")
+shape_material = SubResource("Resource_6kbpj")
+tessellation_tolerence = 7.0
+collision_size = 3.0
+collision_polygon_node_path = NodePath("../Collision")
+
+[node name="Collision" type="CollisionPolygon2D" parent="."]
+modulate = Color(1, 1, 1, 0.3)
+polygon = PackedVector2Array(-216, 8, 296, 8, 296, 11, -216, 11)
+one_way_collision_margin = 13.0

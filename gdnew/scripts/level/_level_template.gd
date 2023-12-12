@@ -1,6 +1,6 @@
 extends Node2D
 
-class_name Level2D
+class_name Level
 
 @export var daylight:bool = true
 

@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8mp2w024r04q"]
+
+[ext_resource type="PackedScene" uid="uid://djx2thkvj7vih" path="res://scenes/components/projectile_components.tscn" id="1_yhbyp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_85b22"]
+size = Vector2(1152, 112)
+
+[node name="TestProjectile" type="Node2D"]
+
+[node name="ProjectileComponents" parent="." instance=ExtResource("1_yhbyp")]
+lifetime = 0.3
+is_target_piercing = true
+is_defense_piercing = true
+damage = 5
+direction = Vector2(0, 0)
+
+[node name="Hitbox" parent="ProjectileComponents" index="0"]
+collision_layer = 8
+collision_mask = 4
+
+[node name="Collision" parent="ProjectileComponents/Hitbox" index="0"]
+position = Vector2(664, 0)
+shape = SubResource("RectangleShape2D_85b22")
+debug_color = Color(0.811765, 0.407843, 0, 0.419608)
+
+[editable path="ProjectileComponents"]
